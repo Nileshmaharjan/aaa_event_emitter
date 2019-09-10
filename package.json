@@ -1,0 +1,11 @@
+{
+  "name": "aaa_event_emitter",
+  "version": "0.1.0",
+  "description": "AAA event emitter and listener",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nilesh Maharjan",
+  "license": "ISC"
+}
