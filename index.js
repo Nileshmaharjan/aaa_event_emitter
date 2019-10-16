@@ -29,17 +29,24 @@ class EventEmitter {
         return this.removeListener(event, fn);
     }
 
-    removeListener (eventName, fn) {
-        let lis = this.listeners[eventName];
-        if (!lis) return this;
-        for(let i = lis.length; i > 0; i--) {
-          if (lis[i] === fn) {
-            lis.splice(i,1);
-            break;
-          }
+    removeListener (event, fn) {
+      let lis = this.listeners[event];
+      console.log(lis);
+      if (!lis) return this;
+      for(let i = lis.length - 1; i >= 0; i--) {
+        // console.log(i);
+        // console.log(lis[1])
+        // console.log(lis[i]);
+        if (lis[i] === fn) {
+
+          lis.splice(i,1);
+          break;
         }
-        return this;
-    }
+        
+      }
+      console.log(this);
+      return this;
+  }
 
     emit(eventName, ...args) {
         let fns = this.listeners[eventName];
@@ -59,13 +66,6 @@ class EventEmitter {
   rawListeners(eventName) {
     return this.listeners[eventName];
   }
-
-   
-
-      
-    
-    
-  
 }
 
 module.exports = EventEmitter;
