@@ -25,36 +25,35 @@ class EventEmitter extends All {
     return this.listeners[eventName];
   }
 
-
-  //   once(eventName, fn) {
+    once(eventName, fn) {
       
-  //       this.listeners[eventName] = this.listeners[eventName] || [];
+        this.listeners[eventName] = this.listeners[eventName] || [];
         
-  //       const onceWrapper = () => {
-  //         fn();
-  //         this.off(eventName, onceWrapper);
-  //       }
-  //       this.listeners[eventName].push(onceWrapper);
-  //       return this;
-  //   }
+        const onceWrapper = () => {
+          fn();
+          this.off(eventName, onceWrapper);
+        }
+        this.listeners[eventName].push(onceWrapper);
+        return this;
+    }
 
-  //   off(event, fn) {
-  //       return this.removeListener(event, fn);
-  //   }
+    off(event, fn) {
+        return this.removeListener(event, fn);
+    }
 
-  //   removeListener (event, fn) {
-  //     let lis = this.listeners[event];
-  //     console.log(lis);
-  //     if (!lis) return this;
-  //     for(let i = lis.length - 1; i >= 0; i--) {
-  //       if (lis[i] === fn) {
+    removeListener (event, fn) {
+      let lis = this.listeners[event];
+      console.log(lis);
+      if (!lis) return this;
+      for(let i = lis.length - 1; i >= 0; i--) {
+        if (lis[i] === fn) {
 
-  //         lis.splice(i,1);
-  //         break;
-  //       }
-  //     }
-  //     return this;
-  // }
+          lis.splice(i,1);
+          break;
+        }
+      }
+      return this;
+  }
 }
 
 module.exports = EventEmitter;
