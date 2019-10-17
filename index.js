@@ -16,7 +16,9 @@ class EventEmitter {
       }
 
     once(eventName, fn) {
+      
         this.listeners[eventName] = this.listeners[eventName] || [];
+        
         const onceWrapper = () => {
           fn();
           this.off(eventName, onceWrapper);
@@ -34,17 +36,12 @@ class EventEmitter {
       console.log(lis);
       if (!lis) return this;
       for(let i = lis.length - 1; i >= 0; i--) {
-        // console.log(i);
-        // console.log(lis[1])
-        // console.log(lis[i]);
         if (lis[i] === fn) {
 
           lis.splice(i,1);
           break;
         }
-        
       }
-      console.log(this);
       return this;
   }
 
@@ -52,6 +49,7 @@ class EventEmitter {
         let fns = this.listeners[eventName];
         if (!fns) return false;
         fns.forEach((f) => {
+          // console.log(f(...args));
           f(...args);
         });
         return true;

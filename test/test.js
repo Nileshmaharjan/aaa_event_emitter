@@ -1,6 +1,6 @@
 
 
-const EventEmitter = require('./index');
+const EventEmitter = require('../index');
 
 
 // Add Event Listener 
@@ -12,35 +12,35 @@ const eventEmitter = new EventEmitter();
 
 // eventEmitter.emit('test-event');
 
-function c1() {
-    console.log('event occured');
- }
+// function c1() {
+//     console.log('event occured');
+//  }
  
- function c2() {
-    console.log('another event occured');
- }
+//  function c2() {
+//     console.log('another event occured');
+//  }
 
- function c3() {
-     console.log('another another event occured');
- }
+//  function c3() {
+//      console.log('another another event occured');
+//  }
 
  // Alias to add event
-eventEmitter.on('eventOne', c1); // Register for eventOne
-eventEmitter.on('eventOne', c2);
-eventEmitter.on('eventOne', c3); // Register for eventOne
-eventEmitter.on('eventTwo', c1);
+// eventEmitter.on('eventOne', c1); // Register for eventOne
+// eventEmitter.on('eventOne', c2);
+// eventEmitter.on('eventOne', c3); // Register for eventOne
+// eventEmitter.on('eventTwo', c1);
 
-console.log(eventEmitter.listenerCount('eventTwo'));
+// console.log(eventEmitter.listenerCount('eventOne'));
 // eventEmitter.emit('eventOne');
 // eventEmitter.emit('eventOne');
 
 // one time event 
 
-// eventEmitter.once('oneTimeEvent', () => {
-//     console.log('oneTimeEvent once fired')
-// });
+eventEmitter.once('oneTimeEvent', () => {
+    console.log('oneTimeEvent once fired')
+});
 
-// eventEmitter.emit('oneTimeEvent');
+eventEmitter.emit('oneTimeEvent');
 
 //event with callback parameters
 
@@ -57,11 +57,11 @@ console.log(eventEmitter.listenerCount('eventTwo'));
 
 //unregistering events 
 
-eventEmitter.off('eventTwo', c1);
+// eventEmitter.off('eventOne', c2);
 
 // eventEmitter.emit('eventOne');
 
-console.log(eventEmitter.listenerCount('eventTwo'));
+// console.log(eventEmitter.listenerCount('eventOne'));
 
 // console.log(eventEmitter.rawListeners('status'));
 
